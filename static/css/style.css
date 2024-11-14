@@ -1,0 +1,106 @@
+/* Apply to the entire body */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+    background-color: #f0f0f0;
+    flex-direction: column; /* Stack elements vertically */
+}
+
+/* Circle container */
+.circle-container {
+    text-align: center;
+    position: relative; /* Needed for positioning the ripple inside */
+}
+
+/* Circle itself */
+.circle {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: #ddd;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-size: 150px;
+    transition: transform 0.4s ease-in-out;
+    position: relative; /* Needed for positioning the ripple inside */
+}
+
+/* Ripple effect */
+.ripple {
+    width: 300px;
+    height: 300px;
+    border-radius: 50%;
+    background-color: #4CAF50;
+    position: absolute;
+    z-index: -1;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%); /* Center the ripple */
+    opacity: 0; /* Initially hidden */
+    transition: opacity 0.4s ease-in-out;
+}
+
+/* Add animation class for scaling */
+.circle.animate {
+    transform: scale(1.5);
+}
+
+/* Make the ripple effect fade */
+.ripple.active {
+    opacity: 1; /* Make the ripple visible */
+}
+
+/* Styling for the switch */
+.switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+    margin-top: 30px; /* Space between the circle and the switch (adjusted) */
+}
+
+.switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #CF5C36;
+    transition: 0.4s;
+    border-radius: 34px;
+}
+
+    .slider:before {
+        position: absolute;
+        content: "";
+        height: 26px;
+        width: 26px;
+        border-radius: 50%;
+        left: 4px;
+        bottom: 4px;
+        background-color: white;
+        transition: 0.4s;
+    }
+
+/* When the switch is checked */
+input:checked + .slider {
+    background-color: #4CAF50; /* Green when enabled */
+}
+
+    input:checked + .slider:before {
+        transform: translateX(26px); /* Move the circle to the right */
+    }
